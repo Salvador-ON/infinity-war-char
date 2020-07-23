@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Filters", type: :request do
+RSpec.describe 'Filters', type: :request do
   it 'return success if filter status is updated correct ' do
     create_client_user
     sign_in

@@ -34,6 +34,4 @@ module Utilities
   def user_islogged
     get '/logged_in'
   end
-
-
 end

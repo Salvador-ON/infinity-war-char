@@ -19,7 +19,6 @@ RSpec.describe Filter, type: :model do
                   password_confirmation: '123456')
     u1.save
     expect(Filter.count).to eq(0)
-    
   end
 
   it 'should update filter' do

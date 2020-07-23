@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_save :downcase_email
   after_create :create_filter
   has_secure_password
-  has_one :filter , dependent: :destroy
+  has_one :filter, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
 
@@ -20,6 +20,6 @@ class User < ApplicationRecord
   end
 
   def create_filter
-    Filter.create(status: '0', user_id: self.id)
+    Filter.create(status: '0', user_id: id)
   end
 end
