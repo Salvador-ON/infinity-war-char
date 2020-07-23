@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def create
     user = User.new(
       email: params['user']['email'],
@@ -6,7 +7,6 @@ class UsersController < ApplicationController
       password: params['user']['password'],
       password_confirmation: params['user']['password_confirmation']
     )
-
     valdiate_user_creation(user)
   end
 
@@ -14,6 +14,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def create_filter
+    Filter.create(status: 0, user_id: @current_user.id)
   end
 
   def valdiate_user_creation(user)

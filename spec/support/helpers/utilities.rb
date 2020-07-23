@@ -20,4 +20,16 @@ module Utilities
                                       password: '123456',
                                       password_confirmation: '123456' } }
   end
+
+  def sign_up_wrong_user
+    post '/signup', params: { user: { email: 'ut1@ut1.com',
+                                      password: '123456',
+                                      password_confirmation: '123456' } }
+  end
+
+  def update_filter
+    put '/filters/1', params: { filter: { status: 'A' } }
+  end
+
+
 end
