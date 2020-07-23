@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'heroes/index'
   get 'spa/index'
   resources :filters,  only: [:index, :update]
   delete :logout, to: "sessions#destroy"
