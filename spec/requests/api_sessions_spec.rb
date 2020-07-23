@@ -41,4 +41,13 @@ RSpec.describe 'test api sessions routes', type: :request do
     delete '/logout'
     expect(JSON.parse(response.body)['logged_out']).to eq(true)
   end
+
+  it 'should return user data and filter data' do
+    create_client_user
+    sign_in
+    user_islogged
+    expect(JSON.parse(response.body)['user']['name']).to eq('user test 1')
+    expect(JSON.parse(response.body)['user']['filter_id']).to eq(1)
+    expect(JSON.parse(response.body)['user']['filter_status']).to eq('0')
+  end
 end

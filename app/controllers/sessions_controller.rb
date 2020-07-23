@@ -19,10 +19,13 @@ class SessionsController < ApplicationController
 
   def logged_in
     if @current_user
+      filter = Filter.find(@current_user.id)
       render json: {
         logged_in: true,
         user: { id: @current_user.id,
-                name: @current_user.name }
+                name: @current_user.name,
+                filter_id: filter.id,
+                filter_status: filter.status }
       }
     else
       render json: {
