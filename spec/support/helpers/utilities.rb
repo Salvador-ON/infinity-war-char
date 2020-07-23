@@ -31,5 +31,9 @@ module Utilities
     put '/filters/1', params: { filter: { status: 'A' } }
   end
 
+  def user_islogged
+    get '/logged_in'
+  end
+
 
 end
