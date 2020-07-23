@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   get 'spa/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  delete :logout, to: "sessions#destroy"
+  get :logged_in, to: "sessions#logged_in"
+  post :signup, to: "users#create"
+  post :signin, to: "sessions#create"
   root to: "spa#index"
 end
