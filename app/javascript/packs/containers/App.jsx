@@ -1,7 +1,8 @@
 import React from 'react';
+import Landing from './Landing'
 
 const App = () => (
-  <h1>hello rails</h1>
+  <Landing/>
 );
 
 export default App;
