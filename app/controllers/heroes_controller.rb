@@ -12,8 +12,8 @@ require 'digest'
 
  def getApi()
  time = Time.now.to_i
-  publicKey = "18dbfa75016d2c2843fa6814b0130ad6"
-  privateKey = "0214487c8eb1e8077a5b7da3fc2b3ce435e5b69d"
+  publicKey = ENV[PUK]
+  privateKey = ENV[PRK]
    value = (time.to_s + privateKey + publicKey).to_s
 
   md5 = Digest::MD5.new 
