@@ -2,8 +2,16 @@ import React from 'react';
 import axiosCalls from "../services/axiosCalls";
 import Error from "./Error";
 import logo from '../assets/logo.png'
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { LogIn } from "../actions/index.js";
+import PropTypes from 'prop-types';
 
 const SignUp = ({setSignUp, setSignIn}) => {
+
+  let history = useHistory();
+
+  const dispatch = useDispatch();
 
   const [userForm, setUserForm] = React.useState({
     name: "",
@@ -47,7 +55,7 @@ const SignUp = ({setSignUp, setSignIn}) => {
       passwordConfirmation.trim() === "" ||
       name.trim() === ""
     ) {
-      // SetError(true, "empty field");
+      SetError(true, "empty field");
       return;
     } else if (password.length < 6) {
       SetError(true, "password need to have 6 characters");
@@ -62,8 +70,8 @@ const SignUp = ({setSignUp, setSignIn}) => {
     axiosCalls.signUp(email, password, passwordConfirmation, name)
       .then((response) => {
         if (response.data.status === "created") {
-          // dispatch(LogIn(response.data.user));
-          // history.push("/dashboard");
+          dispatch(LogIn(response.data.user));
+          history.push("/library");
         } else {
           const data = response.data.error;
           const keys = Object.keys(data);
@@ -164,5 +172,10 @@ const SignUp = ({setSignUp, setSignIn}) => {
     </React.Fragment>
     );
 }
+
+Error.propTypes = {
+  setSignUp: PropTypes.func.isRequired,
+  setSignIn: PropTypes.func.isRequired,
+};
  
 export default SignUp;

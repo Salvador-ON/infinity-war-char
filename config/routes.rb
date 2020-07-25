@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   get :heroes, to: "heroes#index"
-  get 'spa/index'
   resources :filters,  only: [:index, :update]
   delete :logout, to: "sessions#destroy"
   get :logged_in, to: "sessions#logged_in"

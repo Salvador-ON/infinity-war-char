@@ -2,8 +2,18 @@ import React from 'react';
 import axiosCalls from "../services/axiosCalls";
 import Error from "./Error";
 import logo from '../assets/logo.png'
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { LogIn } from "../actions/index.js";
+import PropTypes from 'prop-types';
+
 
 const SignIn = ({setSignUp, setSignIn}) => {
+
+  let history = useHistory();
+
+  const dispatch = useDispatch();
+
 
   const [userForm, setUserForm] = React.useState({
     email: "",
@@ -48,8 +58,8 @@ const SignIn = ({setSignUp, setSignIn}) => {
       .then((response) => {
         if (response.data.logged_in === true) {
           console.log(response)
-          // dispatch(LogIn(response.data.user));
-          // history.push("/dashboard");
+          dispatch(LogIn(response.data.user));
+          history.push("/library");
         } else {
           SetError(true, response.data.error);
         }
@@ -78,7 +88,7 @@ const SignIn = ({setSignUp, setSignIn}) => {
                 required
               />
             </div>
-            
+
             <div className="form-group">
               <label className="text-white" htmlFor="password">Password</label>
               <input
@@ -118,4 +128,10 @@ const SignIn = ({setSignUp, setSignIn}) => {
     );
 }
  
+
+Error.propTypes = {
+  setSignUp: PropTypes.func.isRequired,
+  setSignIn: PropTypes.func.isRequired,
+};
+
 export default SignIn;

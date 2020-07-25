@@ -1,14 +1,11 @@
 import axios from 'axios';
 
-
-
 const Logout = () => (
   axios
     .delete('/logout', {
       withCredentials: true,
     })
 );
-
 
 
 const logIn = (email, password) => (
