@@ -1,43 +1,40 @@
 import React from 'react';
-import axiosCalls from "../services/axiosCalls";
-import Error from "./Error";
-import logo from '../assets/logo.png'
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { LogIn } from "../actions/index.js";
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import axiosCalls from '../services/axiosCalls';
+import Error from './Error';
+import logo from '../assets/logo.png';
+import { LogIn } from '../actions/index';
 
-
-const SignIn = ({setSignUp, setSignIn}) => {
-
-  let history = useHistory();
+const SignIn = ({ setSignUp, setSignIn }) => {
+  const history = useHistory();
 
   const dispatch = useDispatch();
 
-
   const [userForm, setUserForm] = React.useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const signUp = () => {
-    setSignUp(true)
-    setSignIn(false)
-  }
+    setSignUp(true);
+    setSignIn(false);
+  };
 
   const [error, setError] = React.useState({
     value: false,
-    data: "",
+    data: '',
   });
 
   const SetError = (value, data) => {
     setError({
-      value: value,
-      data: data,
+      value,
+      data,
     });
   };
 
-  const HandleForm = (e) => {
+  const HandleForm = e => {
     setUserForm({
       ...userForm,
       [e.target.name]: e.target.value,
@@ -46,37 +43,38 @@ const SignIn = ({setSignUp, setSignIn}) => {
 
   const { email, password } = userForm;
 
-  const HandleSubmit = (e) => {
+  const HandleSubmit = e => {
     e.preventDefault();
 
-    if (email.trim() === "" || password.trim() === "") {
-      SetError(true, "empty field");
+    if (email.trim() === '' || password.trim() === '') {
+      SetError(true, 'empty field');
       return;
     }
 
-    axiosCalls.logIn(email, password )
-      .then((response) => {
+    axiosCalls.logIn(email, password)
+      .then(response => {
         if (response.data.logged_in === true) {
-          console.log(response)
           dispatch(LogIn(response.data.user));
-          history.push("/library");
+          history.push('/library');
         } else {
           SetError(true, response.data.error);
         }
       })
-      .catch((error) => {});
+      .catch(error => {
+        SetError(true, String(error));
+      });
   };
 
-
   return (
-    <React.Fragment>
-       
+    <>
+
       <div className="mx-3 mt-5 py-4 border border-success rounded">
-        
+
         <form onSubmit={HandleSubmit} className="mx-4">
           <h1 className="text-white text-center">Sign In</h1>
-            <div className="form-group">
-              <label className="text-white" htmlFor="inputEmail">Email address</label>
+          <div className="form-group">
+            <label className="text-white" htmlFor="inputEmail">
+              Email address
               <input
                 onChange={HandleForm}
                 type="email"
@@ -87,10 +85,13 @@ const SignIn = ({setSignUp, setSignIn}) => {
                 value={email}
                 required
               />
-            </div>
+            </label>
 
-            <div className="form-group">
-              <label className="text-white" htmlFor="password">Password</label>
+          </div>
+
+          <div className="form-group">
+            <label className="text-white" htmlFor="password">
+              Password
               <input
                 onChange={HandleForm}
                 type="password"
@@ -101,35 +102,37 @@ const SignIn = ({setSignUp, setSignIn}) => {
                 required
                 minLength="6"
               />
+            </label>
+
+          </div>
+
+          <div>
+            <button
+              data-testid="SubmitLoginButton"
+              type="submit"
+              className="btn w-100 btn-outline-success rounded-pill py-1 px-3 mr-3 mb-2"
+            >
+              Submit
+            </button>
+
+            <div className="text-white">
+              <small>Did you dont have an account?</small>
+              <small role="button" className="font-weight-bold click-here" tabIndex={0} onClick={signUp} onKeyDown={signUp}>Click here</small>
             </div>
 
-            <div>
-              <button
-                data-testid="SubmitLoginButton"
-                type="submit"
-                className="btn w-100 btn-outline-success rounded-pill py-1 px-3 mr-3 mb-2"
-              >
-                Submit
-              </button>
-
-              <div className="text-white">
-                <small>Did you don't have an account?</small> <small className="font-weight-bold click-here" onClick={signUp}>Click here</small>
-              </div>
-
-              {error.value ? <Error error={error.data} /> : null}
-            </div>
+            {error.value ? <Error error={error.data} /> : null}
+          </div>
         </form>
       </div>
 
       <div className="logo-sign px-4">
-        <img className="img-fluid mt-1" src={logo} alt="infinity-war-logo"/>
+        <img className="img-fluid mt-1" src={logo} alt="infinity-war-logo" />
       </div>
-    </React.Fragment>
-    );
-}
- 
+    </>
+  );
+};
 
-Error.propTypes = {
+SignIn.propTypes = {
   setSignUp: PropTypes.func.isRequired,
   setSignIn: PropTypes.func.isRequired,
 };

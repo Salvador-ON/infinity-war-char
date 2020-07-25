@@ -1,37 +1,37 @@
 import React from 'react';
-import { LogOut } from "../actions/index.js";
-import { useSelector, useDispatch } from "react-redux";
-import axiosCalls from "../services/axiosCalls";
+import { useSelector, useDispatch } from 'react-redux';
+import { LogOut } from '../actions/index';
+import axiosCalls from '../services/axiosCalls';
 
 const Library = () => {
-
-  const user = useSelector((state) => state.loggedInStatus);
+  const user = useSelector(state => state.loggedInStatus);
 
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
     axiosCalls.Logout()
-      .then((response) => {
+      .then(response => {
         if (response.data.logged_out) {
           dispatch(LogOut());
         }
       })
-      .catch((error) => {});
+      .catch(error => {}); // eslint-disable-line no-unused-vars
   };
-  return ( 
-    <React.Fragment>
+  return (
+    <>
       <h1>library</h1>
-      {user.loggedInStatus === "LOGGED_IN" ? (
-          <span
-            className=""
-            onClick={handleLogOut}
-          >
-            Log Out
-          </span>
-        ) : null}
-    </React.Fragment>
-    
-   );
-}
- 
+      {user.loggedInStatus === 'LOGGED_IN' ? (
+        <button
+          type="button"
+          className=""
+          onClick={handleLogOut}
+        >
+          Log Out
+        </button>
+      ) : null}
+    </>
+
+  );
+};
+
 export default Library;
