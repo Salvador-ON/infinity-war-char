@@ -6,3 +6,8 @@ export const LogIn = value => ({
 export const LogOut = () => ({
   type: 'LOG_OUT',
 });
+
+export const ChangeFilter = value => ({
+  type: 'CHANGE_FILTER',
+  payload: value,
+});
