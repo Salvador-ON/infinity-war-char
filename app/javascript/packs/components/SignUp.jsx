@@ -93,7 +93,7 @@ const SignUp = ({ setSignUp, setSignIn }) => {
           <h1 className="text-white text-center m-0">Sign Up</h1>
 
           <div className="form-group">
-            <label className="text-white" htmlFor="name">
+            <label className="text-white d-block" htmlFor="name">
               Name
               <input
                 onChange={HandleForm}
@@ -109,7 +109,7 @@ const SignUp = ({ setSignUp, setSignIn }) => {
           </div>
 
           <div className="form-group">
-            <label className="text-white" htmlFor="inputEmail">
+            <label className="text-white d-block" htmlFor="inputEmail">
               Email address
               <input
                 onChange={HandleForm}
@@ -126,7 +126,7 @@ const SignUp = ({ setSignUp, setSignIn }) => {
           </div>
 
           <div className="form-group">
-            <label className="text-white" htmlFor="password">
+            <label className="text-white d-block" htmlFor="password">
               Password
               <input
                 onChange={HandleForm}
@@ -143,7 +143,7 @@ const SignUp = ({ setSignUp, setSignIn }) => {
           </div>
 
           <div className="form-group">
-            <label className="text-white" htmlFor="passwordConfirmation">
+            <label className="text-white d-block" htmlFor="passwordConfirmation">
               Password Confirmation
               <input
                 onChange={HandleForm}

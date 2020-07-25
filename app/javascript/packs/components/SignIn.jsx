@@ -73,7 +73,7 @@ const SignIn = ({ setSignUp, setSignIn }) => {
         <form onSubmit={HandleSubmit} className="mx-4">
           <h1 className="text-white text-center">Sign In</h1>
           <div className="form-group">
-            <label className="text-white" htmlFor="inputEmail">
+            <label className="text-white d-block" htmlFor="inputEmail">
               Email address
               <input
                 onChange={HandleForm}
@@ -90,7 +90,7 @@ const SignIn = ({ setSignUp, setSignIn }) => {
           </div>
 
           <div className="form-group">
-            <label className="text-white" htmlFor="password">
+            <label className="text-white d-block" htmlFor="password">
               Password
               <input
                 onChange={HandleForm}
