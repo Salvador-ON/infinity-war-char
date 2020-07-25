@@ -9,7 +9,8 @@ const Logout = () => (
     .delete('/logout', {
       headers: {
       "X-CSRF-Token": token()}}, {
-      withCredentials: true,}));
+      withCredentials: true,})
+);
 
 
 const logIn = (email, password) => (
@@ -21,8 +22,18 @@ const logIn = (email, password) => (
        password}},
       {headers: {
         "X-CSRF-Token": token()}},
-      {withCredentials: true}
-    ));
+      {withCredentials: true})
+);
+
+const updateFilter = (filterId, status) => (
+  axios
+    .put(
+      `/filters/${filterId}`,
+      {filter: {status}},
+      {headers: {
+      "X-CSRF-Token": token()}},
+      {withCredentials: true})
+);
 
 const signUp = (email, password, passwordConfirmation, name) => (
   axios
@@ -35,7 +46,8 @@ const signUp = (email, password, passwordConfirmation, name) => (
         name}},
       {headers: {
       "X-CSRF-Token": token()}},
-      {withCredentials: true}));
+      {withCredentials: true})
+);
 
 const checkLogged = () => (
   axios
@@ -47,6 +59,7 @@ const axiosCalls = {
   logIn,
   signUp,
   checkLogged,
+  updateFilter,
 };
 
 export default axiosCalls;

@@ -28,6 +28,16 @@ const NavBar = () => {
       .catch(error => {}); // eslint-disable-line no-unused-vars
   };
 
+  const handleChangeFilter = () => {
+    axiosCalls.updateFilter(user.user.filter.id, )
+      .then(response => {
+        if (response.data.logged_out) {
+          dispatch(LogOut());
+        }
+      })
+      .catch(error => {}); // eslint-disable-line no-unused-vars
+  };
+
   const handleFilterChange = (e) =>{
     dispatch(ChangeFilter(e.target.value));
     setExpanded(false)

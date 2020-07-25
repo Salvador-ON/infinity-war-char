@@ -24,10 +24,9 @@ class SessionsController < ApplicationController
       render json: {
         logged_in: true,
         user: { id: @current_user.id,
-                name: @current_user.name,
-                filter_id: filter.id,
-                filter_status: filter.status }
-      }
+                name: @current_user.name},
+        filter:{id: filter.id,
+                status: filter.status}}
     else
       render json: {
         logged_in: false
