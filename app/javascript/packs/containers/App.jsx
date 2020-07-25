@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Landing from './Landing';
 import Library from './Library';
 import axiosCalls from '../services/axiosCalls';
-import { LogIn, LogOut } from '../actions/index';
+import { LogIn, LogOut, ChangeFilter } from '../actions/index';
 
 const App = () => {
   const user = useSelector(state => state.loggedInStatus);
@@ -18,6 +18,7 @@ const App = () => {
           && user.loggedInStatus === 'NOT_LOGGED_IN'
         ) {
           dispatch(LogIn(response.data.user));
+          dispatch(ChangeFilter(response.data.filter.status));
         } else if (
           !response.data.logged_in
           && user.loggedInStatus === 'LOGGED_IN'

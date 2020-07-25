@@ -28,11 +28,11 @@ const NavBar = () => {
       .catch(error => {}); // eslint-disable-line no-unused-vars
   };
 
-  const handleChangeFilter = () => {
-    axiosCalls.updateFilter(user.user.filter.id, )
+  const updateStatusFilter = (status) => {
+    axiosCalls.updateFilter(user.filter.id, status)
       .then(response => {
-        if (response.data.logged_out) {
-          dispatch(LogOut());
+        if (response.data.status === 'updated') {
+          setExpanded(false);
         }
       })
       .catch(error => {}); // eslint-disable-line no-unused-vars
@@ -40,8 +40,10 @@ const NavBar = () => {
 
   const handleFilterChange = (e) =>{
     dispatch(ChangeFilter(e.target.value));
-    setExpanded(false)
+    updateStatusFilter(e.target.value)
   }
+
+  
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" expanded={expanded}>
