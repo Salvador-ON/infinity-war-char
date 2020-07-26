@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { LogIn, ChangeFilter} from '../actions/index';
+import { LogIn, ChangeFilter } from '../actions/index';
 import axiosCalls from '../services/axiosCalls';
 import Error from './Error';
 import logo from '../assets/logo.png';
@@ -56,7 +56,6 @@ const SignIn = ({ setSignUp, setSignIn }) => {
 
     axiosCalls.logIn(email, password)
       .then(response => {
-        console.log(response);
         if (response.data.logged_in === true) {
           dispatch(LogIn(response.data.user));
           dispatch(ChangeFilter(response.data.filter.status));

@@ -22,6 +22,7 @@ const NavBar = () => {
       .then(response => {
         if (response.data.logged_out) {
           dispatch(LogOut());
+          window.location.reload(false);
         }
       })
       .catch(error => {}); // eslint-disable-line no-unused-vars
