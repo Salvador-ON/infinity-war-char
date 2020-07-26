@@ -7,6 +7,7 @@ import { LogIn, LogOut, ChangeFilter } from '../actions/index';
 
 const App = () => {
   const user = useSelector(state => state.loggedInStatus);
+  const filter = useSelector(state => state.filter);
 
   const [getInfo, setGetInfo] = React.useState(false);
 
@@ -38,7 +39,7 @@ const App = () => {
 
   return (
     <>
-      {user.loggedInStatus === 'LOGGED_IN' && getInfo ? <Library /> : null}
+      {user.loggedInStatus === 'LOGGED_IN' && getInfo && filter ? <Library /> : null}
       {user.loggedInStatus === 'NOT_LOGGED_IN' && getInfo ? <Landing /> : null}
     </>
   );
