@@ -21,6 +21,7 @@ const Landing = () => {
         </div>
         <div className="d-none d-md-block col-md-8 p-0">
           <div className="banner" style={{ height: '100vh', background: `url(${banner})`, backgroundSize: 'cover' }} />
+          <img className="d-none" src={banner} alt="banner"/>
         </div>
       </div>
     </div>

@@ -65,7 +65,7 @@ const NavBar = () => {
         <Nav>
           <Navbar.Text>
             Signed in as:
-            <span className="text-capitalize font-weight-bold">{user.user.name}</span>
+            <span className="text-capitalize font-weight-bold ml-1">{user.user.name}</span>
           </Navbar.Text>
 
           <Nav>
