@@ -11,7 +11,7 @@ const ModalHeroe = ({ handleClose, heroeModal, show }) => (
       <div className="d-flex justify-content-center">
         <img src={heroeModal.url_image} style={{ height: '30vh' }} alt={heroeModal.name} />
       </div>
-      <h4 className="my-2">Participation in other events</h4>
+      <h4 className="my-2">Events' Participation</h4>
       <ul className="list-group">
         {heroeModal.events.map((event, index) => (
           <li className="list-group-item" key={`${event}${String(index)}`}>{event}</li>
