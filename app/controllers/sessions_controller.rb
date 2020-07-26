@@ -8,10 +8,13 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
+      filter = Filter.find(user.id)
       render json: {
         logged_in: true,
         user: { id: user.id,
-                name: user.name }
+                name: user.name,
+                filter_id: filter.id },
+        filter: { status: filter.status }
       }
     else
       render json: { logged_in: false, error: 'Wrong User / Password Combination' }

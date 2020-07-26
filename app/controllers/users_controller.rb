@@ -23,11 +23,14 @@ class UsersController < ApplicationController
     if user.valid?
       user.save
       session[:user_id] = user.id
+      filter = Filter.find(user.id)
       render json: {
         status: :created,
         logged_in: true,
         user: { id: user.id,
-                name: user.name }
+                name: user.name,
+                filter_id: filter.id },
+        filter: { status: filter.status }
       }
     else
       render json: { status: :not_created, error: user.errors }
