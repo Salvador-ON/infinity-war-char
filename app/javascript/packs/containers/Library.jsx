@@ -57,7 +57,7 @@ const Library = () => {
     <>
       <div className="lib-cont">
         <NavBar />
-        <h1 className="text-white text-center mt-2">Characters</h1>
+        <h1 className="text-white text-center title-char">Characters</h1>
         {!getheroes ? <h3 className="text-white text-center mt-2">Loading Characters...</h3> : null }
         {filterCharacters().length === 0 && getheroes ? <h3 className="text-white text-center mt-2">No Characters Found</h3> : null }
         <div className="d-flex flex-row flex-wrap justify-content-center">
