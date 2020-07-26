@@ -22,7 +22,6 @@ const App = () => {
           && user.loggedInStatus === 'NOT_LOGGED_IN'
         ) {
           dispatch(LogIn(response.data.user));
-          console.log(response.data.filter.status);
           dispatch(ChangeFilter(response.data.filter.status));
         } else if (
           !response.data.logged_in

@@ -56,6 +56,7 @@ const SignIn = ({ setSignUp, setSignIn }) => {
 
     axiosCalls.logIn(email, password)
       .then(response => {
+        console.log(response);
         if (response.data.logged_in === true) {
           dispatch(LogIn(response.data.user));
           dispatch(ChangeFilter(response.data.filter.status));
