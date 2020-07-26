@@ -1,13 +1,12 @@
 import React from 'react';
-import {Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap'
-import logo from '../assets/logo.png';
-import '../styles/Library.css'
+import { Navbar, Nav, Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { LogOut, ChangeFilter } from '../actions/index';
 import axiosCalls from '../services/axiosCalls';
+import logo from '../assets/logo.png';
+import '../styles/Library.css';
 
 const NavBar = () => {
-
   const [expanded, setExpanded] = React.useState(false);
 
   const dispatch = useDispatch();
@@ -16,7 +15,7 @@ const NavBar = () => {
 
   const user = useSelector(state => state.loggedInStatus);
 
-  const options = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const options = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   const handleLogOut = () => {
     axiosCalls.logOut()
@@ -28,7 +27,7 @@ const NavBar = () => {
       .catch(error => {}); // eslint-disable-line no-unused-vars
   };
 
-  const updateStatusFilter = (status) => {
+  const updateStatusFilter = status => {
     axiosCalls.updateFilter(user.user.filter_id, status)
       .then(response => {
         if (response.data.status === 'updated') {
@@ -38,27 +37,25 @@ const NavBar = () => {
       .catch(error => {}); // eslint-disable-line no-unused-vars
   };
 
-  const handleFilterChange = (e) =>{
+  const handleFilterChange = e => {
     dispatch(ChangeFilter(e.target.value));
-    updateStatusFilter(e.target.value)
-  }
-
-  
+    updateStatusFilter(e.target.value);
+  };
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" expanded={expanded}>
       <Navbar.Brand href="#">
-        <img src={logo} height="40" className="d-inline-block" alt="infinity war logo"/>
+        <img src={logo} height="40" className="d-inline-block" alt="infinity war logo" />
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setExpanded(expanded ? false : "expanded")}/>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" onClick={() => setExpanded(expanded ? false : 'expanded')} />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Form inline>
-            <Form.Group  controlId="exampleForm.ControlSelect1">
+            <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Label className="text-white">Filter</Form.Label>
-              <Form.Control as="select" className="mx-2" onChange={handleFilterChange} name="category"  value={filter}>
-                <option value="0" >Disable</option>
-                {options.split('').map((opt) => (
+              <Form.Control as="select" className="mx-2" onChange={handleFilterChange} name="category" value={filter}>
+                <option value="0">Disable</option>
+                {options.split('').map(opt => (
                   <option key={opt}>{opt}</option>
                 ))}
               </Form.Control>
@@ -66,21 +63,22 @@ const NavBar = () => {
           </Form>
         </Nav>
         <Nav>
-          <Navbar.Text> 
-            Signed in as: <a className="text-capitalize" href="#">{user.user.name}</a>
+          <Navbar.Text>
+            Signed in as:
+            <span className="text-capitalize font-weight-bold">{user.user.name}</span>
           </Navbar.Text>
-          
+
           <Nav>
             {user.loggedInStatus === 'LOGGED_IN' ? (
-            <button type="button" className="btn btn-danger mx-0 mx-2" onClick={handleLogOut}>
-              Log Out
-            </button>
+              <button type="button" className="btn btn-danger mx-0 mx-2" onClick={handleLogOut}>
+                Log Out
+              </button>
             ) : null}
           </Nav>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
-}
- 
+};
+
 export default NavBar;
