@@ -24,7 +24,7 @@ const ModalHeroe = ({ handleClose, heroeModal, show }) => (
         Close
       </Button>
       <Button href={heroeModal.url_link} target="_blank" variant="primary" onClick={handleClose}>
-        Check all the commics
+        Check all the comics
       </Button>
     </Modal.Footer>
   </Modal>
