@@ -60,7 +60,7 @@ const Library = () => {
         {filterCharacters().length === 0 ? <h3 className="text-white text-center mt-2">No Characters Found</h3> : null }
         <div className="d-flex flex-row flex-wrap justify-content-center">
           {filterCharacters().map(heroe => (
-            <HeroesCard heroe={heroe} displayModal={displayModal}/>
+            <HeroesCard key={heroe.name} heroe={heroe} displayModal={displayModal} />
           ))}
         </div>
       </div>
