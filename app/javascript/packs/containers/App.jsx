@@ -8,11 +8,14 @@ import { LogIn, LogOut, ChangeFilter } from '../actions/index';
 const App = () => {
   const user = useSelector(state => state.loggedInStatus);
 
+  const [getInfo, setGetInfo] = React.useState(false)
+
   const dispatch = useDispatch();
 
   const checkLoginSatus = () => {
     axiosCalls.checkLogged()
       .then(response => {
+        setGetInfo(true)
         if (
           response.data.logged_in
           && user.loggedInStatus === 'NOT_LOGGED_IN'
@@ -35,7 +38,8 @@ const App = () => {
 
   return (
     <>
-      {user.loggedInStatus === 'NOT_LOGGED_IN' ? <Landing /> : <Library />}
+      {user.loggedInStatus === 'LOGGED_IN' && getInfo ? <Library /> : null}
+      {user.loggedInStatus === 'NOT_LOGGED_IN' && getInfo ? <Landing /> : null}
     </>
   );
 };
