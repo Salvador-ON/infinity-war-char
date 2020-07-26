@@ -8,7 +8,7 @@ import HeroesCard from '../components/HeroesCard';
 
 const Library = () => {
   const [show, setShow] = React.useState(false);
-  const [getheroes, setGetheroes] = React.useState(false)
+  const [getheroes, setGetheroes] = React.useState(false);
   const [heroeModal, setHeroeModal] = React.useState({});
 
   const heroesData = useSelector(state => state.heroesData);
@@ -19,7 +19,7 @@ const Library = () => {
   const checkHeroes = () => {
     axiosCalls.getHeroes()
       .then(response => {
-        setGetheroes(true)
+        setGetheroes(true);
         if ((response.data.heroes).length > 0) {
           dispatch(UpdateHeroes(response.data.heroes));
         }
