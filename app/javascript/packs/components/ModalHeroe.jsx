@@ -9,7 +9,7 @@ const ModalHeroe = ({ handleClose, heroeModal, show }) => (
     </Modal.Header>
     <Modal.Body>
       <div className="d-flex justify-content-center">
-        <img src={`https://${heroeModal.url_image}`} style={{ height: '30vh' }} alt={heroeModal.name} />
+        <img src={heroeModal.url_image} style={{ height: '30vh' }} alt={heroeModal.name} />
       </div>
       <h4 className="my-2">Events’ Participation</h4>
       <ul className="list-group">
@@ -23,7 +23,7 @@ const ModalHeroe = ({ handleClose, heroeModal, show }) => (
       <Button variant="danger" onClick={handleClose}>
         Close
       </Button>
-      <Button href={`https://${heroeModal.url_link}`} target="_blank" variant="primary" onClick={handleClose}>
+      <Button href={heroeModal.url_link} target="_blank" variant="primary" onClick={handleClose}>
         Check all the commics
       </Button>
     </Modal.Footer>
