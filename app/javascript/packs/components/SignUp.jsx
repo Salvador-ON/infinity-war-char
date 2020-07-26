@@ -90,7 +90,7 @@ const SignUp = ({ setSignUp, setSignIn }) => {
 
       <div className="mx-3 mt-1 py-2 border border-primary rounded">
 
-        <form onSubmit={HandleSubmit} className="mx-4">
+        <form onSubmit={HandleSubmit} onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }} className="mx-4">
           <h1 className="text-white text-center m-0">Sign Up</h1>
 
           <div className="form-group">
