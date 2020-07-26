@@ -4,12 +4,13 @@ const token = () => {
   return token;
 }
 
-const Logout = () => (
+const logOut = () => (
   axios
     .delete('/logout', {
       headers: {
       "X-CSRF-Token": token()}}, {
-      withCredentials: true,}));
+      withCredentials: true,})
+);
 
 
 const logIn = (email, password) => (
@@ -21,8 +22,8 @@ const logIn = (email, password) => (
        password}},
       {headers: {
         "X-CSRF-Token": token()}},
-      {withCredentials: true}
-    ));
+      {withCredentials: true})
+);
 
 const signUp = (email, password, passwordConfirmation, name) => (
   axios
@@ -35,18 +36,36 @@ const signUp = (email, password, passwordConfirmation, name) => (
         name}},
       {headers: {
       "X-CSRF-Token": token()}},
-      {withCredentials: true}));
+      {withCredentials: true})
+);
 
 const checkLogged = () => (
   axios
     .get('/logged_in', { withCredentials: true})
 );
 
+const updateFilter = (filterId, status) => (
+  axios
+    .put(
+      `/filters/${filterId}`,
+      {filter: {status}},
+      {headers: {
+      "X-CSRF-Token": token()}},
+      {withCredentials: true})
+);
+
+const getHeroes = () => (
+  axios
+    .get('/heroes', { withCredentials: true})
+);
+
 const axiosCalls = {
-  Logout,
+  logOut,
   logIn,
   signUp,
   checkLogged,
+  updateFilter,
+  getHeroes,
 };
 
 export default axiosCalls;

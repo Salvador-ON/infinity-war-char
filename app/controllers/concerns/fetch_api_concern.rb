@@ -13,7 +13,8 @@ module FetchApiConcern
     response_body['data']['results'].each do |sup|
       heroe = { 'name' => sup['name'],
                 'url_image' => sup['thumbnail']['path'] + '.' + sup['thumbnail']['extension'],
-                'urlink' => sup['urls'][0]['url'], 'events' => sup['events']['items'].collect { |e| e['name'] } }
+                'url_link' => sup['urls'][0]['url'],
+                'events' => sup['events']['items'].collect { |e| e['name'] } }
       sp_array.push(heroe)
     end
 

@@ -48,6 +48,6 @@ RSpec.describe 'test api sessions routes', type: :request do
     user_islogged
     expect(JSON.parse(response.body)['user']['name']).to eq('user test 1')
     expect(JSON.parse(response.body)['user']['filter_id']).to eq(1)
-    expect(JSON.parse(response.body)['user']['filter_status']).to eq('0')
+    expect(JSON.parse(response.body)['filter']['status']).to eq('0')
   end
 end
