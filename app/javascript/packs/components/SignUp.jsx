@@ -2,10 +2,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { LogIn } from '../actions/index';
 import axiosCalls from '../services/axiosCalls';
 import Error from './Error';
 import logo from '../assets/logo.png';
-import { LogIn } from '../actions/index';
+
 
 const SignUp = ({ setSignUp, setSignIn }) => {
   const history = useHistory();

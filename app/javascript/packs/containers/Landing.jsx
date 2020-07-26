@@ -1,10 +1,10 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import '../styles/Landing.css';
 import banner from '../assets/banner.jpg';
 import Welcome from '../components/Welcome';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
+import 'bootstrap/dist/css/bootstrap.css';
+import '../styles/Landing.css';
 
 const Landing = () => {
   const [signUp, setSignUp] = React.useState(false);
