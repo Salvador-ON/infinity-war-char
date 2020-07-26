@@ -1,15 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { LogIn } from '../actions/index';
 import PropTypes from 'prop-types';
+import { LogIn } from '../actions/index';
 import axiosCalls from '../services/axiosCalls';
 import Error from './Error';
 import logo from '../assets/logo.png';
 
 const SignIn = ({ setSignUp, setSignIn }) => {
-  const history = useHistory();
-
   const dispatch = useDispatch();
 
   const [userForm, setUserForm] = React.useState({
@@ -43,6 +40,12 @@ const SignIn = ({ setSignUp, setSignIn }) => {
 
   const { email, password } = userForm;
 
+  const HandleEnter = e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
+
   const HandleSubmit = e => {
     e.preventDefault();
 
@@ -55,7 +58,6 @@ const SignIn = ({ setSignUp, setSignIn }) => {
       .then(response => {
         if (response.data.logged_in === true) {
           dispatch(LogIn(response.data.user));
-          history.push('/library');
         } else {
           SetError(true, response.data.error);
         }
@@ -70,13 +72,14 @@ const SignIn = ({ setSignUp, setSignIn }) => {
 
       <div className="mx-3 mt-5 py-4 border border-success rounded">
 
-        <form onSubmit={HandleSubmit} onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }} className="mx-4">
+        <form onSubmit={HandleSubmit} className="mx-4">
           <h1 className="text-white text-center">Sign In</h1>
           <div className="form-group">
             <label className="text-white d-block" htmlFor="inputEmail">
               Email address
               <input
                 onChange={HandleForm}
+                onKeyPress={HandleEnter}
                 type="email"
                 className="form-control"
                 id="inputEmail"
@@ -94,6 +97,7 @@ const SignIn = ({ setSignUp, setSignIn }) => {
               Password
               <input
                 onChange={HandleForm}
+                onKeyPress={HandleEnter}
                 type="password"
                 className="form-control"
                 id="password"

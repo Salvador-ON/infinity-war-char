@@ -1,16 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { LogIn } from '../actions/index';
 import axiosCalls from '../services/axiosCalls';
 import Error from './Error';
 import logo from '../assets/logo.png';
 
-
 const SignUp = ({ setSignUp, setSignIn }) => {
-  const history = useHistory();
-
   const dispatch = useDispatch();
 
   const [userForm, setUserForm] = React.useState({
@@ -48,6 +44,11 @@ const SignUp = ({ setSignUp, setSignIn }) => {
     email, password, passwordConfirmation, name,
   } = userForm;
 
+  const HandleEnter = e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
   const HandleSubmit = e => {
     e.preventDefault();
 
@@ -72,7 +73,6 @@ const SignUp = ({ setSignUp, setSignIn }) => {
       .then(response => {
         if (response.data.status === 'created') {
           dispatch(LogIn(response.data.user));
-          history.push('/library');
         } else {
           const data = response.data.error;
           const keys = Object.keys(data);
@@ -90,7 +90,7 @@ const SignUp = ({ setSignUp, setSignIn }) => {
 
       <div className="mx-3 mt-1 py-2 border border-primary rounded">
 
-        <form onSubmit={HandleSubmit} onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }} className="mx-4">
+        <form onSubmit={HandleSubmit} className="mx-4">
           <h1 className="text-white text-center m-0">Sign Up</h1>
 
           <div className="form-group">
@@ -98,6 +98,7 @@ const SignUp = ({ setSignUp, setSignIn }) => {
               Name
               <input
                 onChange={HandleForm}
+                onKeyPress={HandleEnter}
                 type="text"
                 className="form-control"
                 id="name"
@@ -114,6 +115,7 @@ const SignUp = ({ setSignUp, setSignIn }) => {
               Email address
               <input
                 onChange={HandleForm}
+                onKeyPress={HandleEnter}
                 type="email"
                 className="form-control"
                 id="inputEmail"
@@ -131,6 +133,7 @@ const SignUp = ({ setSignUp, setSignIn }) => {
               Password
               <input
                 onChange={HandleForm}
+                onKeyPress={HandleEnter}
                 type="password"
                 className="form-control"
                 id="password"
@@ -148,6 +151,7 @@ const SignUp = ({ setSignUp, setSignIn }) => {
               Password Confirmation
               <input
                 onChange={HandleForm}
+                onKeyPress={HandleEnter}
                 type="password"
                 className="form-control"
                 id="passwordConfirmation"

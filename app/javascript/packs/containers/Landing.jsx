@@ -13,7 +13,7 @@ const Landing = () => {
   return (
     <div className="container-fluid">
       <div className="row">
-        <div className="col-12 col-md-4 bg-blk px-0" style={{ height: '100vh'}}>
+        <div className="col-12 col-md-4 bg-blk px-0" style={{ height: '100vh' }}>
           {!signIn && !signUp ? <Welcome setSignUp={setSignUp} setSignIn={setSignIn} /> : null }
           {signIn ? <SignIn setSignUp={setSignUp} setSignIn={setSignIn} /> : null }
           {signUp ? <SignUp setSignUp={setSignUp} setSignIn={setSignIn} /> : null }
