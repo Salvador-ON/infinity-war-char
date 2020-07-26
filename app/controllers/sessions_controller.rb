@@ -8,11 +8,11 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      filter = Filter.find(@current_user.id)
+      filter = Filter.find(user.id)
       render json: {
         logged_in: true,
-        user: { id: @current_user.id,
-                name: @current_user.name,
+        user: { id: user.id,
+                name: user.name,
                 filter_id: filter.id },
         filter: { status: filter.status }
       }
