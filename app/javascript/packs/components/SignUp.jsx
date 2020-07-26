@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { LogIn } from '../actions/index';
+import { LogIn, ChangeFilter } from '../actions/index';
 import axiosCalls from '../services/axiosCalls';
 import Error from './Error';
 import logo from '../assets/logo.png';
@@ -73,6 +73,7 @@ const SignUp = ({ setSignUp, setSignIn }) => {
       .then(response => {
         if (response.data.status === 'created') {
           dispatch(LogIn(response.data.user));
+          dispatch(ChangeFilter(response.data.filter.status));
         } else {
           const data = response.data.error;
           const keys = Object.keys(data);
