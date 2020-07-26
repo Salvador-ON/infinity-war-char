@@ -4,7 +4,10 @@ Where you can check all the characters that participated in this event and see i
 
 The project was developed using Ruby on Rails with React-Redux and Marvel API to fetch the characters' data.
 
-![](app/assets/images/vg.gif)
+![](screenshot/MacPro-Landing.png)
+![](screenshot/MacPro-Library.png)
+![](screenshot/Iphone-Landing.png)
+![](screenshot/Iphone-Library.png)
 
 # Live Version
 
