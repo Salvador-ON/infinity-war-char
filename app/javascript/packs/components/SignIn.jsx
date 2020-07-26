@@ -81,6 +81,7 @@ const SignIn = ({ setSignUp, setSignIn }) => {
               Email address
               <input
                 onChange={HandleForm}
+                onKeyPress={HandleEnter}
                 type="email"
                 className="form-control"
                 id="inputEmail"
@@ -98,7 +99,7 @@ const SignIn = ({ setSignUp, setSignIn }) => {
               Password
               <input
                 onChange={HandleForm}
-
+                onKeyPress={HandleEnter}
                 type="password"
                 className="form-control"
                 id="password"
