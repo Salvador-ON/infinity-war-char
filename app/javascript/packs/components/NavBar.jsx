@@ -43,7 +43,7 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="black" variant="dark" expanded={expanded}>
+    <Navbar fixed="top" collapseOnSelect expand="lg" bg="black" variant="dark" expanded={expanded}>
       <Navbar.Brand href="#">
         <img src={logo} height="40" className="d-inline-block" alt="infinity war logo" />
       </Navbar.Brand>
@@ -65,7 +65,7 @@ const NavBar = () => {
         <Nav>
           <Navbar.Text>
             Signed in as:
-            <span className="text-capitalize font-weight-bold">{user.user.name}</span>
+            <span className="text-capitalize font-weight-bold ml-1">{user.user.name}</span>
           </Navbar.Text>
 
           <Nav>

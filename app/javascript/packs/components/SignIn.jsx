@@ -1,15 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { LogIn } from '../actions/index';
 import axiosCalls from '../services/axiosCalls';
 import Error from './Error';
 import logo from '../assets/logo.png';
-import { LogIn } from '../actions/index';
 
 const SignIn = ({ setSignUp, setSignIn }) => {
-  const history = useHistory();
-
   const dispatch = useDispatch();
 
   const [userForm, setUserForm] = React.useState({
@@ -43,6 +40,12 @@ const SignIn = ({ setSignUp, setSignIn }) => {
 
   const { email, password } = userForm;
 
+  const HandleEnter = e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
+
   const HandleSubmit = e => {
     e.preventDefault();
 
@@ -55,7 +58,6 @@ const SignIn = ({ setSignUp, setSignIn }) => {
       .then(response => {
         if (response.data.logged_in === true) {
           dispatch(LogIn(response.data.user));
-          history.push('/library');
         } else {
           SetError(true, response.data.error);
         }
@@ -77,6 +79,7 @@ const SignIn = ({ setSignUp, setSignIn }) => {
               Email address
               <input
                 onChange={HandleForm}
+                onKeyPress={HandleEnter}
                 type="email"
                 className="form-control"
                 id="inputEmail"
@@ -94,6 +97,7 @@ const SignIn = ({ setSignUp, setSignIn }) => {
               Password
               <input
                 onChange={HandleForm}
+                onKeyPress={HandleEnter}
                 type="password"
                 className="form-control"
                 id="password"
