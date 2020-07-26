@@ -34,9 +34,9 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       {user.loggedInStatus === 'NOT_LOGGED_IN' ? <Landing /> : <Library />}
-    </>
+    </React.Fragment>
   );
 };
 

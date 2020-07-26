@@ -1,13 +1,9 @@
 const heroesData = (state = [], action) => {
   switch (action.type) {
     case 'UPDATE':
-      return {
-        heroesData: action.payload,
-      };
+      return action.payload;
     case 'ERRASE':
-      return {
-        heroesData: [],
-      };
+      return [];
     default:
       return state;
   }

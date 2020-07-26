@@ -19,7 +19,7 @@ const NavBar = () => {
   const options = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
   const handleLogOut = () => {
-    axiosCalls.Logout()
+    axiosCalls.logOut()
       .then(response => {
         if (response.data.logged_out) {
           dispatch(LogOut());
@@ -29,7 +29,7 @@ const NavBar = () => {
   };
 
   const updateStatusFilter = (status) => {
-    axiosCalls.updateFilter(user.filter.id, status)
+    axiosCalls.updateFilter(user.user.filter_id, status)
       .then(response => {
         if (response.data.status === 'updated') {
           setExpanded(false);
@@ -80,7 +80,7 @@ const NavBar = () => {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-    );
+  );
 }
  
 export default NavBar;

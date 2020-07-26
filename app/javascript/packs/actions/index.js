@@ -11,3 +11,9 @@ export const ChangeFilter = value => ({
   type: 'CHANGE_FILTER',
   payload: value,
 });
+
+export const UpdateHeroes = value => ({
+  type: 'UPDATE',
+  payload: value,
+});
+
