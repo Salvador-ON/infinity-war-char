@@ -1,0 +1,22 @@
+.bg-blk {
+  background-color: rgb(0, 0, 0);
+}
+
+.buttons {
+  position: absolute;
+  bottom: 2vh;
+}
+
+.logo-sign {
+  position: absolute;
+  bottom: 5vh;
+}
+
+.logo-signUp {
+  position: absolute;
+  bottom: 2vh;
+}
+
+.click-here:hover {
+  cursor: pointer;
+}
