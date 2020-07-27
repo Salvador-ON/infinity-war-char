@@ -23,8 +23,7 @@ The project was developed using Ruby on Rails with React-Redux and Marvel API to
 
 - Users will be able to pĺay memory games with the characters' cards.
 
-- Development of error screen component to show a message when something went wrong with the server communication.
-
+- Development of error screen component to show a message when something fail with the server communication.
 
 # How to run locally this project
 
